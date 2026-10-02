@@ -12,7 +12,7 @@ These are unofficial builds, not affiliated with or endorsed by the upstream pro
 docker run --rm --user "$(id -u):$(id -g)" -v "$PWD:/work" ghcr.io/randomcontainers/jpegoptim-imagemagick --strip-all *.jpg
 ```
 
-The same images can also be pulled as `randomcontainers.com/jpegoptim-imagemagick`. The examples in the [jpegoptim README](https://github.com/randomcontainers/jpegoptim#readme) work with this image too.
+The examples in the [jpegoptim README](https://github.com/randomcontainers/jpegoptim#readme) work with this image too.
 
 ## Tags
 
