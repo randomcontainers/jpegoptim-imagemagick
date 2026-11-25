@@ -58,7 +58,16 @@ gh attestation verify oci://ghcr.io/randomcontainers/jpegoptim-imagemagick:lates
   --repo randomcontainers/jpegoptim-imagemagick --signer-repo randomcontainers/ci
 ```
 
-Images from `ghcr.io/randomcontainers/jpegoptim` are built in [randomcontainers/jpegoptim](https://github.com/randomcontainers/jpegoptim), so verify them with `--repo randomcontainers/jpegoptim --signer-repo randomcontainers/ci`.
+Each image also has a keyless cosign signature from the same workflow, for admission controllers that check cosign signatures:
+
+```sh
+cosign verify ghcr.io/randomcontainers/jpegoptim-imagemagick:latest \
+  --certificate-identity https://github.com/randomcontainers/ci/.github/workflows/build.yml@refs/tags/v1 \
+  --certificate-oidc-issuer https://token.actions.githubusercontent.com \
+  --certificate-github-workflow-repository randomcontainers/jpegoptim-imagemagick
+```
+
+Images from `ghcr.io/randomcontainers/jpegoptim` are built in [randomcontainers/jpegoptim](https://github.com/randomcontainers/jpegoptim), so name that repository in `--repo` and `--certificate-github-workflow-repository`.
 
 ## Updates
 
